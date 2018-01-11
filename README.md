@@ -7,9 +7,9 @@ Enables adbanced repairing and salvaging for all vehicles and helo's (Tanks and 
 
 Dynamic Menu that only shows options available based on damage, and sub-menus to reduce clutter.
 
-Includes salvage of fully function complements (engine, wheels, fuel tank, main rotor, tail rotor).
+Includes salvage of fully function components (engine, wheels, fuel tank, main rotor, tail rotor).
 
-Includes Repair of damaged elements if not fully destroyed (engine, wheels, fuel tank, main rotor, tail roror, windows, all other hitpoints)
+Includes Repair of damaged elements if not fully destroyed (engine, wheels, fuel tank, main rotor, tail rotor, windows, all other hitpoints)
 
 Includes replacement of destroyed elements (engine, wheels, windows, main rotor, tail rotor)
 
