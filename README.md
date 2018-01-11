@@ -2,7 +2,7 @@
 
 Version 1.0
 
-Description:
+#Description:
 Enables adbanced repairing and salvaging for all vehicles and helo's (Tanks and Jets not currently supported, but configurable).
 Includes salvage of fully function complements (engine, wheels, fuel tank, main rotor, tail rotor).
 Includes Repair of damaged elements if not fully destroyed (engine, wheels, fuel tank, main rotor, tail roror, windows, all other hitpoints)
