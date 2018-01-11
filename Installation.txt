@@ -1,0 +1,78 @@
+Bones Seriously Advanced Repair System (SARS)
+
+Version 1.0
+
+Description:
+Enables adbanced repairing and salvaging for all vehicles and helo's (Tanks and Jets not currently supported, but configurable).
+Includes salvage of fully function complements (engine, wheels, fuel tank, main rotor, tail rotor).
+Includes Repair of damaged elements if not fully destroyed (engine, wheels, fuel tank, main rotor, tail roror, windows, all other hitpoints)
+Includes replacement of destroyed elements (engine, wheels, windows, main rotor, tail rotor)
+Default config assumes that Exile Extended Survival pack is installed on the server, highly recommended http://www.exilemod.com/topic/24989-release-extended-survival-pack-mod/  To use on vanilla Exile or with other items mod packs adjust the recipes as per instruction below.
+Requires both tools (not consumed) and items (consumed on use). Duct tape and fiberglass, used for repairing, are not consumed by default (despite being in the items list) but instead have a chance to be consumed on each use (simulating running out).
+
+If you are looking for somethig a little simpler, try my general advanced repair script: https://github.com/Bones50/ExileMod-Advanced-Repair 
+
+Install Instructions:
+
+1. Download your server mission file (e.g. Exile.Altis.pbo) and unpack.
+2. Create a folder in your mission file called "Custom", if you don't already have one.
+3. Create a sub-folder called "advancedRepair".
+4. Copy the Bones_fnc_salvageAndRepair.sqf and Bones_fnc_salvageAndRepairMenu.sqf files from the download customn folder to the newly created folder in your mission file.
+5. Open description.ext file in your unpacked mission file and adjust showHUD to set Commadning Menu to "true" as per below:
+	showHUD[] = 
+	{
+		true,   // Scripted HUD (same as showHUD command)
+		true,   // Vehicle + soldier info
+		true,   // Vehicle radar 
+		true,   // Vehicle compass
+		true,   // Tank direction indicator
+		true,  // Commanding menu
+		false,  // Group Bar
+		true,   // HUD Weapon Cursors
+		false   // Squad Radar
+	};
+
+6. Open initPLayerLocal.sqf file in your unpacked mission file and inlcude the below immediately after "if (!hasInterface || isServer) exitWith {};" :
+
+	//Bones Super Advanced Repair System (SARS)
+	Bones_fnc_salvageAndRepairMenu = compileFinal preprocessFileLineNumbers "Custom\advancedRepair\Bones_fnc_salvageAndRepairMenu.sqf"; 
+
+7. Open the config.cpp file in your mission, find the "class CfgInteractionMenus" section, and replace the repair function for cars and helos respectively, with the following:
+
+	//Bones Custom Vehicle Repairs
+
+	class Repair: ExileAbstractAction
+	{
+		title = "Repair/Salvage";
+		condition = "true";
+		action = "_this call Bones_fnc_salvageAndRepairMenuCar";
+	};
+
+
+	// Bones Custom Air Repairs
+	class Repair: ExileAbstractAction
+	{
+		title = "Repair/Salvage";
+		condition = "true";
+		action = "_this call Bones_fnc_salvageAndRepairMenuHelo";
+	};
+
+8. FOR INFISTAR USERS ONLY:
+	a. Look for infistar config line:
+
+	KCM = "true"; /* Just close ALL CommandingMenus */
+	and change "true" to "false"
+
+OR
+
+	b. Add "#USER:ASL_Show_Repair_Options_Menu_Array" to the "allowedCommandingMenus[]" option.
+
+7. Re-PBO your mission file (and Infistar file if modified) and re-upload to the server.
+
+To adjust recipes:
+
+1. Find the relevant recipe in the Bones_fnc_salvageAndRepair.sqf file (e.g. _action = 'replaceCarWheel').
+2. Modify the _partsNeeded array to add items to be consumed (note duct tape and fiberglass are not immediately consumed but instead consumed per chance).
+3. Modify the _itemsNeeded array to add tools required (not consumed).
+
+
