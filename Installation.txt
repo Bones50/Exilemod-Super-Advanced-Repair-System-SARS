@@ -45,7 +45,7 @@ Install Instructions:
 	{
 		title = "Repair/Salvage";
 		condition = "true";
-		action = "_this call Bones_fnc_salvageAndRepairMenuCar";
+		action = "_this call Bones_fnc_salvageAndRepairMenu";
 	};
 
 
@@ -54,7 +54,7 @@ Install Instructions:
 	{
 		title = "Repair/Salvage";
 		condition = "true";
-		action = "_this call Bones_fnc_salvageAndRepairMenuHelo";
+		action = "_this call Bones_fnc_salvageAndRepairMenu";
 	};
 
 8. FOR INFISTAR USERS ONLY:
